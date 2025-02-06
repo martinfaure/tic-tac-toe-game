@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="game.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<img src="./assets/logo.svg" alt="" />
+				<div class="turn-div">
+					<img src="./assets/croix.svg" alt="" />
+					<span>TURN</span>
+				</div>
+				<button class="btn-reset">
+					<img src="./assets/reset-arrow.svg" alt="" />
+				</button>
+			</nav>
+		</header>
+		<main>
+			<section class="game-area">
+				<button id="btn0"></button>
+				<button id="btn1"></button>
+				<button id="btn2"></button>
+				<button id="btn3"></button>
+				<button id="btn4"></button>
+				<button id="btn5"></button>
+				<button id="btn6"></button>
+				<button id="btn7"></button>
+				<button id="btn8"></button>
+			</section>
+			<section class="info-game-area">
+				<div class="info-p1">
+					<p>X (P1)</p>
+					<span>14</span>
+				</div>
+				<div class="info-ties">
+					<p>TIES</p>
+					<span>32</span>
+				</div>
+				<div class="info-p2">
+					<p>O (P2)</p>
+					<span>11</span>
+				</div>
+			</section>
+			<div class="overlay-start-game">
+				<div class="overlay-resp">
+					<img src="./assets/logo.svg" alt="" />
+					<section class="sec-select">
+						<h3>PICK PLAYER 1’S MARK</h3>
+						<div class="div-select-btn">
+							<button class="btn-croix-select">
+								<img
+									class="imgjsp"
+									id="croix-img"
+									src="./assets/croix.svg"
+									alt=""
+								/></button
+							><button class="btn-rond-select">
+								<img class="imgjsp2" src="./assets/Oval Copy.svg" alt="" />
+							</button>
+						</div>
+						<span>REMEMBER : X GOES FIRST</span>
+					</section>
+					<div class="gap-btn-index">
+						<button class="btn-yellow">NEW GAME (VS CPU)</button>
+
+						<button class="btn-blue">NEW GAME (VS PLAYER)</button>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<div class="popup" class="popupO">
+			<p>OH NO, YOU LOST...</p>
+			<div class="popup-take-round">
+				<img src="./assets/Oval Copy2.svg" alt="" />
+				<h3>TAKES THE ROUND</h3>
+			</div>
+			<button id="closePopup">QUIT</button>
+			<button id="closePopup1">NEXT ROUND</button>
+		</div>
+		<div class="popup" class="popupX">
+			<p>YOU WON!</p>
+			<div class="popup-take-round">
+				<img src="./assets/Combined Shape Copy 2.svg" alt="" />
+				<h3>TAKES THE ROUND</h3>
+			</div>
+			<button id="closePopup">QUIT</button>
+			<button id="closePopup1">NEXT ROUND</button>
+		</div>
+		<div class="popup">
+			<p>RESTART GAME ?</p>
+			<button id="closePopup">NO, CANCEL</button>
+			<button id="closePopup1">YES, RESTART</button>
+		</div>
+		<div class="popup">
+			<p>PLAYER 1 WINS!</p>
+			<div class="popup-take-round">
+				<img src="./assets/Oval Copy2.svg" alt="" />
+				<h3>TAKES THE ROUND</h3>
+			</div>
+			<button id="closePopup">QUIT</button>
+			<button id="closePopup1">NEXT ROUND</button>
+		</div>
+		<div class="popup">
+			<p>PLAYER 2 WINS!</p>
+			<div class="popup-take-round">
+				<img src="./assets/Combined Shape Copy 2.svg" alt="" />
+				<h3>TAKES THE ROUND</h3>
+			</div>
+			<button id="closePopup">QUIT</button>
+			<button id="closePopup1">NEXT ROUND</button>
+		</div>
+		<div class="popup">
+			<p>ROUND TIED</p>
+			<button id="closePopup">QUIT</button>
+			<button id="closePopup1">NEXT ROUND</button>
+		</div>
+
+		<script src="./main.js"></script>
+	</body>
+</html>
