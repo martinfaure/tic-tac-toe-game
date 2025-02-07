@@ -13,28 +13,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const popupO = document.querySelector(".popupO");
 const popupX = document.querySelector(".popupX");
-const player1 = true;
-const player2 = false;
-const playerWin = "";
-const tablGame = ["", "", "", "", "", "", "", "", ""];
+let player1 = true;
+let player2 = false;
+let playerWin = "";
+let tablGame = ["", "", "", "", "", "", "", "", ""];
 const winningCombinations = [
-	[1, 2, 3],
-	[4, 5, 6],
-	[7, 8, 9],
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
 	[1, 4, 7],
 	[2, 5, 8],
-	[3, 6, 9],
-	[1, 5, 9],
-	[3, 5, 7],
+	[0, 4, 8],
+	[2, 4, 6],
 ];
 
-function winPlayer() {
-	if (player1 == winningCombinations) {
-		player1 = true;
-		popupO.style.display = "block";
-	} else player2 == winningCombinations;
-	player2 = true;
-	popupX.style.display = "block";
+function checkWin() {
+	for (let combination of winningCombinations) {
+		let [a, b, c] = combination;
+		if (
+			tablGame[a] &&
+			tablGame[a] === tablGame[b] &&
+			tablGame[a] === tablGame[c]
+		) {
+			playerWin = tablGame[a];
+			if (playerWin === "X") {
+				popupX.style.display = "block";
+			} else if (playerWin === "O") {
+				popupO.style.display = "block";
+			}
+			return true;
+		}
+	}
+	return false;
 }
 
 const btnDisable = document.querySelector(".btn-yellow");
@@ -43,6 +54,7 @@ const btnCroix = document.querySelector(".btn-croix-select");
 const btnRond = document.querySelector(".btn-rond-select");
 const imgcroix = document.querySelector(".imgjsp");
 const imgRond = document.querySelector(".imgjsp2");
+
 btnDisable.addEventListener("click", () => {
 	overlay.remove();
 });
@@ -63,30 +75,22 @@ btnRond.addEventListener("click", () => {
 
 function addImageToButton(buttonId) {
 	const button = document.getElementById(buttonId);
-	const img = document.createElement("img");
-	img.src = "./assets/Oval Copy2.svg";
-
 	button.addEventListener("click", () => {
-		button.appendChild(img);
-		const newButton = document.createElement("button");
-		newButton.id = "btn" + document.querySelectorAll("button").length;
-
-		newButton.addEventListener("click", () => {
-			const newImg = document.createElement("img");
-			newImg.src = "./assets/Oval Copy2.svg";
-			newButton.appendChild(newImg);
-		});
-
-		document.getElementById("button-container").appendChild(newButton);
+		if (!tablGame[buttonId]) {
+			const img = document.createElement("img");
+			img.src = player1
+				? "./assets/Oval Copy2.svg"
+				: "./assets/croix - Copie.svg";
+			button.appendChild(img);
+			tablGame[buttonId] = player1 ? "O" : "X";
+			if (!checkWin()) {
+				player1 = !player1;
+				player2 = !player2;
+			}
+		}
 	});
 }
 
-addImageToButton("btn0");
-addImageToButton("btn1");
-addImageToButton("btn2");
-addImageToButton("btn3");
-addImageToButton("btn4");
-addImageToButton("btn5");
-addImageToButton("btn6");
-addImageToButton("btn7");
-addImageToButton("btn8");
+for (let i = 0; i < 9; i++) {
+	addImageToButton(`btn${i}`);
+}
